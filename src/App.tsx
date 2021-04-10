@@ -4,7 +4,7 @@ import Input from './Input';
 import DropDownContainer from './DropDownContainer';
 import './styles.css'
 
-export default function App(): React.ReactNode {
+export default function App(): React.ReactElement {
 
     const [inputFirstButtonLabel, setInputFirstButtonLabel] = useState('Submit');
     const [inputSecondButtonLabel, setInputSecondButtonLabel] = useState('Cancel');
