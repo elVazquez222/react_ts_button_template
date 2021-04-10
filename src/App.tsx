@@ -67,7 +67,7 @@ export default function App(): React.ReactElement {
         setInputWithPeep(!inputWithPeep)
     }
     
-    function getButtonColor(colorHexCode: string) {
+    function getButtonColor(colorHexCode: string): string | undefined {
         
         if (colorHexCode.length < 7) {
             return undefined;
@@ -87,7 +87,7 @@ export default function App(): React.ReactElement {
         return /^#[0-9A-F]{6}$/i.test(colorCode)
     }
     
-    function renderInputs(this: React.ChangeEvent<InputEvent>) {
+    function renderInputs(this: React.ChangeEvent<InputEvent> | void) {
         
         return (
             <React.Fragment>
@@ -95,12 +95,10 @@ export default function App(): React.ReactElement {
                 
                     <h3>Set a label: </h3>                    
                     <Input 
-                        value={inputFirstButtonLabel} 
                         onChange={handleChangeFirstButtonLabelInput.bind(this)}
                     />
                     
                     <Input 
-                        value={inputSecondButtonLabel} 
                         onChange={handleChangeSecondButtonLabelInput.bind(this)}
                     />
                 </div>
@@ -109,14 +107,12 @@ export default function App(): React.ReactElement {
                 
                     <h3>Choose a color (hex): </h3>                    
                     <Input 
-                        value={inputFirstButtonColor}
                         onChange={handleChangeFirstButtonColorInput.bind(this)}
                         maxLength={7}
                         placeholder="#339934"
                     />                    
                 
                     <Input 
-                        value={inputSecondButtonColor}
                         onChange={handleChangeSecondButtonColorInput.bind(this)}
                         maxLength={7}
                         placeholder="#cc0000"
@@ -127,7 +123,6 @@ export default function App(): React.ReactElement {
                 
                     <h3>padding: </h3>                    
                     <Input 
-                        value={inputGeneralButtonPadding}
                         onChange={handleChangePaddingInput.bind(this)}
                         placeholder="1em"
                     />                                   
@@ -137,7 +132,6 @@ export default function App(): React.ReactElement {
                 
                     <h3>font-size: </h3>                    
                     <Input 
-                        value={inputGeneralFontSize}
                         onChange={handleChangeFontSizeInput.bind(this)}
                         placeholder="16px"
                     />                                   
@@ -149,7 +143,6 @@ export default function App(): React.ReactElement {
                     <Input 
                         type="checkbox"
                         id="fancy"
-                        value={inputFancyStyle}
                         onChange={handleFancyChange.bind(this)}
                     />                                 
                 </div>
@@ -160,7 +153,6 @@ export default function App(): React.ReactElement {
                     <Input 
                         type="checkbox"
                         id="peeps"
-                        value={inputWithPeep}
                         onChange={handleWithPeepChange.bind(this)}
                     />                                 
                 </div>
@@ -168,7 +160,7 @@ export default function App(): React.ReactElement {
         );
     }
     
-    function renderButtons(this: React.ChangeEvent<InputEvent>): React.ReactElement {
+    function renderButtons(this: React.ChangeEvent<InputEvent> | void): React.ReactElement {
         
         return(
             <React.Fragment>
@@ -189,6 +181,7 @@ export default function App(): React.ReactElement {
                         fontSize={inputGeneralFontSize}
                         fancy={inputFancyStyle}
                         peepUrl={inputWithPeep === true ? positivePeepSvgUrl : undefined}
+                        onClick={noop}
                     />
                 </div>
                 
@@ -208,6 +201,7 @@ export default function App(): React.ReactElement {
                         fontSize={inputGeneralFontSize}
                         fancy={inputFancyStyle}
                         peepUrl={inputWithPeep === true ? negativePeepSvgUrl : undefined}
+                        onClick={noop}
                     />
                 </div>
             </React.Fragment>

@@ -9,10 +9,10 @@ interface ICustomButtonProps {
     label: string;
 
     /** The hex code of the buttons background color */
-    colorHexCode: string;
+    colorHexCode?: string;
 
     /** The function that will be invoked on click (for example a form submitHandler) */
-    onClick: () => {};
+    onClick: () => void;
     
     /** Defaults to "1em" */
     padding: string;
@@ -24,7 +24,7 @@ interface ICustomButtonProps {
     fancy: boolean;
     
     /** When provided renders an SVG next to the button */
-    peepUrl: string;
+    peepUrl?: string;
 }
 
 export default function CustomButton(props: ICustomButtonProps): React.ReactElement {
