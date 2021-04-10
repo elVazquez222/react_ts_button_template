@@ -15,5 +15,6 @@ The corresponding JSX code is generated automatically so that the user can copy 
 
 ## Demo
 
+![Seems like the demo gif couldn't be loaded..][Uploading demo.gif…]()
 
 
