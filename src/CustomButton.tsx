@@ -1,6 +1,33 @@
 import React from 'react';
 
-export default function CustomButton(props) {
+interface ICustomButtonProps {
+    
+    /** Basic default styles submit | cancel */
+    defaultButtonStyle: 'submit' | 'cancel';
+
+    /** The text to be shown on the button */
+    label: string;
+
+    /** The hex code of the buttons background color */
+    colorHexCode: string;
+
+    /** The function that will be invoked on click (for example a form submitHandler) */
+    onClick: () => {};
+    
+    /** Defaults to "1em" */
+    padding: string;
+    
+    /** Defaults to "16px" */
+    fontSize: string;
+    
+    /** When true, sets a default style with animation */
+    fancy: boolean;
+    
+    /** When provided renders an SVG next to the button */
+    peepUrl: string;
+}
+
+export default function CustomButton(props: ICustomButtonProps): React.ReactElement {
     
     let buttonClassName = props.defaultButtonStyle === 'submit' ? 'submit-btn' : 'cancel-btn';
     buttonClassName += props.fancy === true ? ' fancy' : '';
@@ -10,7 +37,7 @@ export default function CustomButton(props) {
     function buildStyleObject() {
         
         const { colorHexCode, padding, fontSize } = props;
-        let style = {background: props.colorHexCode}
+        let style = {background: colorHexCode}
         
         if (padding !== 'default') {
             style = Object.assign({ padding }, style)    
@@ -30,7 +57,7 @@ export default function CustomButton(props) {
                 style={style}
                 onClick={props.onClick} 
             >
-                {props.buttonText}
+                {props.label}
             </div>
             {props.peepUrl !== undefined && (               
                 <img
@@ -41,28 +68,3 @@ export default function CustomButton(props) {
         </React.Fragment>
     );
 }
-
-/* provide the following props to your Scrimbutton:
-
-    // the text to be shown on the button
-    label: string 
-
-    // the hex code of the buttons background color
-    colorHexCode: string
-
-    // the function that will be invoked on click (for example a form submitHandler)
-    onClick: () => {}
-    
-    // defaults to "1em"
-    padding: string
-    
-    // defaults to "16px"
-    fontSize: string
-    
-    // when true, sets a default style with animation
-    fancy: boolean
-    
-    // when provided renders an SVG next to the button
-    peepUrl: string
-
-*/

@@ -168,7 +168,7 @@ export default function App(): React.ReactNode {
         );
     }
     
-    function renderButtons(this: React.ChangeEvent<InputEvent>) {
+    function renderButtons(this: React.ChangeEvent<InputEvent>): React.ReactElement {
         
         return(
             <React.Fragment>
@@ -182,7 +182,7 @@ export default function App(): React.ReactNode {
                         /> 
                     )}                    
                     <CustomButton 
-                        buttonText={inputFirstButtonLabel} 
+                        label={inputFirstButtonLabel} 
                         defaultButtonStyle="submit" 
                         colorHexCode={getButtonColor(inputFirstButtonColor)}
                         padding={inputGeneralButtonPadding}
@@ -201,7 +201,7 @@ export default function App(): React.ReactNode {
                         />
                     )}  
                     <CustomButton 
-                        buttonText={inputSecondButtonLabel}
+                        label={inputSecondButtonLabel}
                         defaultButtonStyle="cancel" 
                         colorHexCode={getButtonColor(inputSecondButtonColor)} 
                         padding={inputGeneralButtonPadding}
