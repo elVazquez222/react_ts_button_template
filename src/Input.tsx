@@ -1,10 +1,19 @@
 import React from 'react';
 
-export default function Input(props) {
+interface IInputProps {
+    value: string | boolean;
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void
+    maxLength?: number;
+    placeholder?: string;
+    type?: 'text' | 'color' | 'checkbox' | undefined;
+    id?: string;
+}
+
+export default function Input(this: HTMLInputElement, props: IInputProps) {
 
     const defaultMaxLength = 16;
 
-    function onFocusInput(event: React.MouseEvent) {
+    function onFocusInput(event: React.FocusEvent<HTMLInputElement>) {
         event.target.select();
     }
     
