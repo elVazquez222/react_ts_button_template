@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 
-export default function DropDownContainer(props) {
+interface IDropDownContainerProps {
+    title: string;
+    children: React.ReactChild;
+}
+
+export default function DropDownContainer(this: HTMLHeadingElement, props: IDropDownContainerProps): React.ReactElement {
     
     const [showContent, setShowContent] = useState(false)
     
@@ -12,7 +17,7 @@ export default function DropDownContainer(props) {
     return(
         <div className="dropDownContainer">
             
-            <h3 className="dropDownContainerTitle" onClick={handleDropDownClick.bind(this)}>            {props.title}
+            <h3 className="dropDownContainerTitle" onClick={handleDropDownClick.bind(this)}>{props.title}
                 <i 
                     className="fas fa-chevron-circle-down" 
                     style={{transform: showContent ? 'rotate(180deg)' : 'none'}}
