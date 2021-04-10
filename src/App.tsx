@@ -4,7 +4,7 @@ import Input from './Input';
 import DropDownContainer from './DropDownContainer';
 import './styles.css'
 
-export default function App() {
+export default function App(): React.ReactNode {
 
     const [inputFirstButtonLabel, setInputFirstButtonLabel] = useState('Submit');
     const [inputSecondButtonLabel, setInputSecondButtonLabel] = useState('Cancel');
@@ -21,23 +21,23 @@ export default function App() {
     const negativePeepSvgUrl = 'https://assets.website-files.com/5e51c674258ffe10d286d30a/5e5359ee8becbf772f53c5d4_peep-71.svg';
     
     // LABEL
-    function handleChangeFirstButtonLabelInput(event) {
+    function handleChangeFirstButtonLabelInput(event: React.ChangeEvent<HTMLInputElement>) {
         setInputFirstButtonLabel(event.target.value);
     }   
     
-    function handleChangeSecondButtonLabelInput(event) {
+    function handleChangeSecondButtonLabelInput(event: React.ChangeEvent<HTMLInputElement>) {
         setInputSecondButtonLabel(event.target.value);
     }     
     // COLOR
-    function handleChangeFirstButtonColorInput(event) {
+    function handleChangeFirstButtonColorInput(event: React.ChangeEvent<HTMLInputElement>) {
         setInputFirstButtonColor(event.target.value);
     }
     
-    function handleChangeSecondButtonColorInput(event) {
+    function handleChangeSecondButtonColorInput(event: React.ChangeEvent<HTMLInputElement>) {
         setInputSecondButtonColor(event.target.value);
     }
     // PADDING
-    function handleChangePaddingInput(event) {
+    function handleChangePaddingInput(event: React.ChangeEvent<HTMLInputElement>) {
         
         if (event.target.value === '') {
 
@@ -48,7 +48,7 @@ export default function App() {
         setInputGeneralButtonPadding(event.target.value);
     }
     // FONT SIZE
-    function handleChangeFontSizeInput(event) {
+    function handleChangeFontSizeInput(event: React.ChangeEvent<HTMLInputElement>) {
         
         if (event.target.value === '') {
 
@@ -67,7 +67,7 @@ export default function App() {
         setInputWithPeep(!inputWithPeep)
     }
     
-    function getButtonColor(colorHexCode) {
+    function getButtonColor(colorHexCode: string) {
         
         if (colorHexCode.length < 7) {
             return undefined;
@@ -82,12 +82,12 @@ export default function App() {
         return colorHexCode;
     }
     
-    function isValidColor(colorCode) {
+    function isValidColor(colorCode: string) {
         // credits: found regex on https://stackoverflow.com/questions/1636350/how-to-identify-a-given-string-is-hex-color-format
         return /^#[0-9A-F]{6}$/i.test(colorCode)
     }
     
-    function renderInputs() {
+    function renderInputs(this: React.ChangeEvent<InputEvent>) {
         
         return (
             <React.Fragment>
@@ -168,7 +168,7 @@ export default function App() {
         );
     }
     
-    function renderButtons() {
+    function renderButtons(this: React.ChangeEvent<InputEvent>) {
         
         return(
             <React.Fragment>
@@ -224,8 +224,8 @@ export default function App() {
             <React.Fragment>
                 <h3>Include your Scrimbutton:</h3>                
                 <textarea 
-                    rows="30" 
-                    cols="40" 
+                    rows={30}
+                    cols={40} 
                     value={getButtonsSourceCode()} 
                     onChange={noop}
                 /> 
@@ -258,18 +258,6 @@ export default function App() {
         peepUrl=${inputWithPeep === true ? `"${negativePeepSvgUrl}"` : '""'}
     />
         `
-    }
-    
-    function getPaddingPropCode() {
-        
-        if (inputGeneralButtonPadding === undefined) {
-            return '';
-        }
-        
-        return inputGeneralButtonPadding !== undefined
-                && inputGeneralButtonPadding !== '' 
-                    ? `padding: ${inputGeneralButtonPadding}` 
-                    : '';
     }
     
     return (
