@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CustomButton from './CustomButton';
+import ScrimButton from './ScrimButton';
 import Input from './Input';
 import DropDownContainer from './DropDownContainer';
 import './styles.css'
@@ -203,7 +203,7 @@ export default function App(): React.ReactElement {
                             onBlur={handleChangeFirstButtonColorInput.bind(this)}
                         /> 
                     )}                    
-                    <CustomButton 
+                    <ScrimButton 
                         label={inputFirstButtonLabel} 
                         defaultButtonStyle="submit" 
                         colorHexCode={getButtonColor(inputFirstButtonColor)}
@@ -223,7 +223,7 @@ export default function App(): React.ReactElement {
                             onBlur={handleChangeSecondButtonColorInput.bind(this)}
                         />
                     )}  
-                    <CustomButton 
+                    <ScrimButton 
                         label={inputSecondButtonLabel}
                         defaultButtonStyle="cancel" 
                         colorHexCode={getButtonColor(inputSecondButtonColor)} 
@@ -262,7 +262,7 @@ export default function App(): React.ReactElement {
         
 {/* The following 'bad' indentation is because the indent would transfer to the displayed text */}
         return `
-    <CustomButton 
+    <ScrimButton 
         buttonText=${`"${inputFirstButtonLabel}"`} 
         defaultButtonStyle="submit" 
         colorHexCode=${getButtonColor(inputFirstButtonColor)}
@@ -272,7 +272,7 @@ export default function App(): React.ReactElement {
         imageUrl=${shouldShowImage === true ? `"${inputFirstButtonImageUrl}"` : '""'}
     />
     
-    <CustomButton 
+    <ScrimButton 
         buttonText=${`"${inputSecondButtonLabel}"`}
         defaultButtonStyle="cancel" 
         colorHexCode=${getButtonColor(inputSecondButtonColor)} 

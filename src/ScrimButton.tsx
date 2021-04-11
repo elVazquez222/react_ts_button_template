@@ -27,7 +27,7 @@ interface ICustomButtonProps {
     imageUrl?: string;
 }
 
-export default function CustomButton(props: ICustomButtonProps): React.ReactElement {
+export default function ScrimButton(props: ICustomButtonProps): React.ReactElement {
     
     let buttonClassName = props.defaultButtonStyle === 'submit' ? 'submit-btn' : 'cancel-btn';
     buttonClassName += props.fancy === true ? ' fancy' : '';
