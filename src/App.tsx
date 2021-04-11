@@ -5,20 +5,23 @@ import DropDownContainer from './DropDownContainer';
 import './styles.css'
 
 export default function App(): React.ReactElement {
+    
+    const positivePeepSvgUrl = 'https://assets.website-files.com/5e51c674258ffe10d286d30a/5e5357a8c992500f5fc84f40_peep-52.svg';
+    const negativePeepSvgUrl = 'https://assets.website-files.com/5e51c674258ffe10d286d30a/5e5359ee8becbf772f53c5d4_peep-71.svg';
 
     const [inputFirstButtonLabel, setInputFirstButtonLabel] = useState('Submit');
     const [inputSecondButtonLabel, setInputSecondButtonLabel] = useState('Cancel');
     
     const [inputFirstButtonColor, setInputFirstButtonColor] = useState('#339934');
     const [inputSecondButtonColor, setInputSecondButtonColor] = useState('#cc0000');
+
+    const [inputFirstButtonImageUrl, setInputFirstButtonImageUrl] = useState(positivePeepSvgUrl);
+    const [inputSecondButtonImageUrl, setInputSecondButtonImageUrl] = useState(negativePeepSvgUrl);
     
     const [inputGeneralButtonPadding, setInputGeneralButtonPadding] = useState('default');
     const [inputGeneralFontSize, setInputGeneralFontSize] = useState('default');
     const [inputFancyStyle, setInputFancyStyle] = useState(false);
     const [shouldShowImage, setShouldShowImage] = useState(false);
-    
-    const positivePeepSvgUrl = 'https://assets.website-files.com/5e51c674258ffe10d286d30a/5e5357a8c992500f5fc84f40_peep-52.svg';
-    const negativePeepSvgUrl = 'https://assets.website-files.com/5e51c674258ffe10d286d30a/5e5359ee8becbf772f53c5d4_peep-71.svg';
     
     // LABEL
     function handleChangeFirstButtonLabelInput(event: React.ChangeEvent<HTMLInputElement>) {
@@ -62,9 +65,17 @@ export default function App(): React.ReactElement {
     function handleFancyChange() {
         setInputFancyStyle(!inputFancyStyle);
     }
-    // PEEPS
+    // IMAGES
     function handleShouldShowImageChange() {
         setShouldShowImage(!shouldShowImage)
+    }
+
+    function handleFirstButtonImageUrlChange(event: React.ChangeEvent<HTMLInputElement>) {
+        setInputFirstButtonImageUrl(event.target.value)
+    }
+
+    function handleSecondButtonImageUrlChange(event: React.ChangeEvent<HTMLInputElement>) {
+        setInputSecondButtonImageUrl(event.target.value)
     }
     
     function getButtonColor(colorHexCode: string): string | undefined {
@@ -91,7 +102,7 @@ export default function App(): React.ReactElement {
         
         return (
             <React.Fragment>
-                <div className="optionSet labelInputs">
+                <div className="optionSet">
                 
                     <h3>Set a label: </h3>                    
                     <Input 
@@ -103,7 +114,7 @@ export default function App(): React.ReactElement {
                     />
                 </div>
                 
-                <div className="optionSet colorInputs">
+                <div className="optionSet">
                 
                     <h3>Choose a color (hex): </h3>                    
                     <Input 
@@ -119,7 +130,7 @@ export default function App(): React.ReactElement {
                     />                                      
                 </div>
                 
-                <div className="optionSet paddingInput">
+                <div className="optionSet">
                 
                     <h3>padding: </h3>                    
                     <Input 
@@ -128,7 +139,7 @@ export default function App(): React.ReactElement {
                     />                                   
                 </div>
                 
-                <div className="optionSet paddingInput">
+                <div className="optionSet">
                 
                     <h3>font-size: </h3>                    
                     <Input 
@@ -137,7 +148,7 @@ export default function App(): React.ReactElement {
                     />                                   
                 </div>
                 
-                <div className="optionSet fancyStyleCheckbox">
+                <div className="optionSet">
                 
                     <label htmlFor="fancy"><h3>fancy shmancy animation: </h3></label>              
                     <Input 
@@ -154,7 +165,25 @@ export default function App(): React.ReactElement {
                         type="checkbox"
                         id="peeps"
                         onChange={handleShouldShowImageChange.bind(this)}
-                    />                                 
+                    /> 
+
+                    {shouldShowImage && (
+                        <React.Fragment>
+                            <h3>image urls: </h3>                    
+                            <Input 
+                                onChange={handleFirstButtonImageUrlChange.bind(this)}
+                                maxLength={500}
+                                placeholder={positivePeepSvgUrl}
+                            />                    
+
+                            <Input 
+                                onChange={handleSecondButtonImageUrlChange.bind(this)}
+                                maxLength={500}
+                                placeholder={negativePeepSvgUrl}
+                            />
+                        </React.Fragment>
+                    )}
+                                                      
                 </div>
             </React.Fragment>
         );
@@ -179,7 +208,7 @@ export default function App(): React.ReactElement {
                         padding={inputGeneralButtonPadding}
                         fontSize={inputGeneralFontSize}
                         fancy={inputFancyStyle}
-                        imageUrl={shouldShowImage === true ? positivePeepSvgUrl : undefined}
+                        imageUrl={shouldShowImage === true ? inputFirstButtonImageUrl : undefined}
                         onClick={noop}
                     />
                 </div>
@@ -199,7 +228,7 @@ export default function App(): React.ReactElement {
                         padding={inputGeneralButtonPadding}
                         fontSize={inputGeneralFontSize}
                         fancy={inputFancyStyle}
-                        imageUrl={shouldShowImage === true ? negativePeepSvgUrl : undefined}
+                        imageUrl={shouldShowImage === true ? inputSecondButtonImageUrl : undefined}
                         onClick={noop}
                     />
                 </div>

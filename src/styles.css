@@ -24,7 +24,7 @@ html, body {
 
 .optionSet::after {
     content: "";
-    height: 90%;
+    height: 97%;
     background: blue;
     opacity: .1;
     width: 103%;
