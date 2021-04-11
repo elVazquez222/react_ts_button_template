@@ -169,8 +169,7 @@ export default function App(): React.ReactElement {
                 
                     {inputFancyStyle === false && (
                         <input type="color" 
-                            value={inputFirstButtonColor}
-                            onChange={handleChangeFirstButtonColorInput.bind(this)}
+                            onBlur={handleChangeFirstButtonColorInput.bind(this)}
                         /> 
                     )}                    
                     <CustomButton 
@@ -189,8 +188,7 @@ export default function App(): React.ReactElement {
                 
                     {inputFancyStyle === false && (
                         <input type="color" 
-                            value={inputSecondButtonColor}
-                            onChange={handleChangeSecondButtonColorInput.bind(this)}
+                            onBlur={handleChangeSecondButtonColorInput.bind(this)}
                         />
                     )}  
                     <CustomButton 
