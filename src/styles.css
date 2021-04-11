@@ -89,7 +89,7 @@ input[type=checkbox] {
     cursor: pointer;
 }
 
-.peep {
+.image {
     height: 100px;
     margin-right: 10px;
     transform: translateX(-35px) rotateY(180deg);

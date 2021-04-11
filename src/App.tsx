@@ -15,7 +15,7 @@ export default function App(): React.ReactElement {
     const [inputGeneralButtonPadding, setInputGeneralButtonPadding] = useState('default');
     const [inputGeneralFontSize, setInputGeneralFontSize] = useState('default');
     const [inputFancyStyle, setInputFancyStyle] = useState(false);
-    const [inputWithPeep, setInputWithPeep] = useState(false);
+    const [shouldShowImage, setShouldShowImage] = useState(false);
     
     const positivePeepSvgUrl = 'https://assets.website-files.com/5e51c674258ffe10d286d30a/5e5357a8c992500f5fc84f40_peep-52.svg';
     const negativePeepSvgUrl = 'https://assets.website-files.com/5e51c674258ffe10d286d30a/5e5359ee8becbf772f53c5d4_peep-71.svg';
@@ -63,8 +63,8 @@ export default function App(): React.ReactElement {
         setInputFancyStyle(!inputFancyStyle);
     }
     // PEEPS
-    function handleWithPeepChange() {
-        setInputWithPeep(!inputWithPeep)
+    function handleShouldShowImageChange() {
+        setShouldShowImage(!shouldShowImage)
     }
     
     function getButtonColor(colorHexCode: string): string | undefined {
@@ -147,13 +147,13 @@ export default function App(): React.ReactElement {
                     />                                 
                 </div>
                 
-                <div className="optionSet withPeepsCheckbox">
+                <div className="optionSet">
                 
-                    <label htmlFor="peeps"><h3>peep it up: </h3></label>                   
+                    <label htmlFor="peeps"><h3>with image: </h3></label>                   
                     <Input 
                         type="checkbox"
                         id="peeps"
-                        onChange={handleWithPeepChange.bind(this)}
+                        onChange={handleShouldShowImageChange.bind(this)}
                     />                                 
                 </div>
             </React.Fragment>
@@ -164,7 +164,6 @@ export default function App(): React.ReactElement {
         
         return(
             <React.Fragment>
-            { /* TODO: When moving mouse over the colorpicker with left button pressed there will be many many many state updates and re-rendering. Find a solution */ }
                 <div className="buttonWithColorPicker">
                 
                     {inputFancyStyle === false && (
@@ -179,7 +178,7 @@ export default function App(): React.ReactElement {
                         padding={inputGeneralButtonPadding}
                         fontSize={inputGeneralFontSize}
                         fancy={inputFancyStyle}
-                        peepUrl={inputWithPeep === true ? positivePeepSvgUrl : undefined}
+                        imageUrl={shouldShowImage === true ? positivePeepSvgUrl : undefined}
                         onClick={noop}
                     />
                 </div>
@@ -198,7 +197,7 @@ export default function App(): React.ReactElement {
                         padding={inputGeneralButtonPadding}
                         fontSize={inputGeneralFontSize}
                         fancy={inputFancyStyle}
-                        peepUrl={inputWithPeep === true ? negativePeepSvgUrl : undefined}
+                        imageUrl={shouldShowImage === true ? negativePeepSvgUrl : undefined}
                         onClick={noop}
                     />
                 </div>
@@ -228,7 +227,7 @@ export default function App(): React.ReactElement {
     function getButtonsSourceCode() {
         /* TODO: find a way to just not render a property line in this literal string if the prop is undefined or a default value */
         
-{/* The following bad indentation is because the indent would transfer to the displayed text */}
+{/* The following 'bad' indentation is because the indent would transfer to the displayed text */}
         return `
     <CustomButton 
         buttonText=${`"${inputFirstButtonLabel}"`} 
@@ -237,17 +236,17 @@ export default function App(): React.ReactElement {
         padding=${`"${inputGeneralButtonPadding}"`}
         fontSize=${`"${inputGeneralFontSize}"`}
         fancy=${`{${inputFancyStyle}}`}
-        peepUrl=${inputWithPeep === true ? `"${positivePeepSvgUrl}"` : '""'}
+        imageUrl=${shouldShowImage === true ? `"${positivePeepSvgUrl}"` : '""'}
     />
     
-    <Scrimbutton 
+    <CustomButton 
         buttonText=${`"${inputSecondButtonLabel}"`}
         defaultButtonStyle="cancel" 
         colorHexCode=${getButtonColor(inputSecondButtonColor)} 
         padding=${`"${inputGeneralButtonPadding}"`}
         fontSize=${`"${inputGeneralFontSize}"`}
         fancy=${`{${inputFancyStyle}}`}
-        peepUrl=${inputWithPeep === true ? `"${negativePeepSvgUrl}"` : '""'}
+        imageUrl=${shouldShowImage === true ? `"${negativePeepSvgUrl}"` : '""'}
     />
         `
     }

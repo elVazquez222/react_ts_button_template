@@ -23,8 +23,8 @@ interface ICustomButtonProps {
     /** When true, sets a default style with animation */
     fancy: boolean;
     
-    /** When provided renders an SVG next to the button */
-    peepUrl?: string;
+    /** When provided renders an image (best SVG) on the button */
+    imageUrl?: string;
 }
 
 export default function CustomButton(props: ICustomButtonProps): React.ReactElement {
@@ -59,10 +59,10 @@ export default function CustomButton(props: ICustomButtonProps): React.ReactElem
             >
                 {props.label}
             </div>
-            {props.peepUrl !== undefined && (               
+            {props.imageUrl !== undefined && (               
                 <img
-                    src={props.peepUrl}
-                    className="peep"
+                    src={props.imageUrl}
+                    className="image"
                 /> 
             )}
         </React.Fragment>
