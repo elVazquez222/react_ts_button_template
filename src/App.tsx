@@ -168,6 +168,7 @@ export default function App(): React.ReactElement {
                 
                     {inputFancyStyle === false && (
                         <input type="color" 
+                            defaultValue={inputFirstButtonColor}
                             onBlur={handleChangeFirstButtonColorInput.bind(this)}
                         /> 
                     )}                    
@@ -187,6 +188,7 @@ export default function App(): React.ReactElement {
                 
                     {inputFancyStyle === false && (
                         <input type="color" 
+                            defaultValue={inputSecondButtonColor}
                             onBlur={handleChangeSecondButtonColorInput.bind(this)}
                         />
                     )}  
