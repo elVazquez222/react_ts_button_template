@@ -105,11 +105,13 @@ export default function App(): React.ReactElement {
                 <div className="optionSet">
                 
                     <h3>Set a label: </h3>                    
-                    <Input 
+                    <Input
+                        defaultValue={inputFirstButtonLabel} 
                         onChange={handleChangeFirstButtonLabelInput.bind(this)}
                     />
                     
-                    <Input 
+                    <Input
+                        defaultValue={inputSecondButtonLabel}  
                         onChange={handleChangeSecondButtonLabelInput.bind(this)}
                     />
                 </div>
@@ -244,7 +246,7 @@ export default function App(): React.ReactElement {
         
         return(
             <React.Fragment>
-                <h3>Include your Scrimbutton:</h3>                
+                <h3>Include your Scrimbuttons:</h3>                
                 <textarea 
                     rows={30}
                     cols={40} 

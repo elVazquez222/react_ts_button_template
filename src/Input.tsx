@@ -2,6 +2,7 @@ import React from 'react';
 
 interface IInputProps {
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+    defaultValue?: string;
     maxLength?: number;
     placeholder?: string;
     type?: 'text' | 'color' | 'checkbox' | undefined;
@@ -23,5 +24,6 @@ export default function Input(this: HTMLInputElement, props: IInputProps) {
                 onFocus={onFocusInput.bind(this)}
                 maxLength={props.maxLength ? props.maxLength : defaultMaxLength}
                 placeholder={props.placeholder ? props.placeholder : ''}
+                defaultValue={props.defaultValue ?? ''}
             />
 }
