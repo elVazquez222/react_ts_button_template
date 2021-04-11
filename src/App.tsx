@@ -267,7 +267,7 @@ export default function App(): React.ReactElement {
         padding=${`"${inputGeneralButtonPadding}"`}
         fontSize=${`"${inputGeneralFontSize}"`}
         fancy=${`{${inputFancyStyle}}`}
-        imageUrl=${shouldShowImage === true ? `"${positivePeepSvgUrl}"` : '""'}
+        imageUrl=${shouldShowImage === true ? `"${inputFirstButtonImageUrl}"` : '""'}
     />
     
     <CustomButton 
@@ -277,7 +277,7 @@ export default function App(): React.ReactElement {
         padding=${`"${inputGeneralButtonPadding}"`}
         fontSize=${`"${inputGeneralFontSize}"`}
         fancy=${`{${inputFancyStyle}}`}
-        imageUrl=${shouldShowImage === true ? `"${negativePeepSvgUrl}"` : '""'}
+        imageUrl=${shouldShowImage === true ? `"${inputSecondButtonImageUrl}"` : '""'}
     />
         `
     }
